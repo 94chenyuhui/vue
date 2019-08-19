@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+			}
+			.red{
+				background: red;
+			}
+			.navajowhite{
+				background: navajowhite;
+			}
+			.gold{
+				background: gold;
+			}
+			.lawngreen{
+				background: lawngreen;
+				
+			}
+		</style>
+		<script src="vue.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{gareen.name}}
+			{{gareen.hp}}
+			点击{{clickNumber}}次
+			<button v-on:click="count">点击</button>
+			<button @click="cctv">重置</button>
+			<div class="gold" @click="color">
+				gold
+				<div class="lawngreen" @click.self="color">
+					lawngreen
+					<div class="red" @click="color">
+						red
+						<div class="navajowhite" @click="color">
+							navajowhite
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+		</div>
+		<script>
+			let gareen={"name":"盖伦","hp":8888};
+			new Vue({
+				el:"#app",
+				data:{
+					message:gareen,
+					clickNumber:0,
+					name:""
+				},
+				methods:{
+					count:function(){
+						this.clickNumber++;
+					},
+					cctv:function(){
+						this.clickNumber=0;
+					},
+					color:function(){
+						//this.name=this.innerHTML;
+						//alert(this.innerHTML)
+						//this.name=document.getElementsByClassName("red")[0].innerHTML;
+						this.name=event.currentTarget.innerHTML;
+						console.log(this.name)
+						alert(this.name)
+					},
+	
+				}
+				
+			})
+			
+		</script>
+		
+	</body>
+</html>
